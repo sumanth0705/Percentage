@@ -1,0 +1,49 @@
+<html>
+<head>
+<script type="text/javascript">
+   function myfun(){
+      alert("Submitted Successfully");
+   }
+</script>
+</head>
+<body>
+
+<h1>Percentage Calculator</h1>
+
+<form action="percentage.php" method="post">
+
+Reg_num: <input type="Number" name="reg" /><br><br>
+C_Lang: <input type="Number" name="clan" /><br><br>
+Linux: <input type="Number" name="linux" /><br><br>
+Aptitude: <input type="Number" name="apti" /><br><br>
+English : <input type="Number" name="eng" /><br><br>
+Storage : <input type="Number" name="storage" /><br><br>
+OpenSource : <input type="Number" name="opensource" /><br><br>
+
+<button type="submit" onclick="myfun()" >Submit</button>
+
+</form>
+
+<?php
+
+echo "hello";
+$con = mysqli_connect('localhost','sumanth','123456','percentage');
+
+$reg = $_POST['reg'];
+$clan = $_POST['clan'];
+$linux = $_POST['linux'];
+$aptitude = $_POST['apti'];
+$eng = $_POST['eng'];
+$storage = $_POST['storage'];
+$opensource = $_POST['opensource'];
+
+$result = $clan + $linux + $aptitude + $eng + $storage + $opensource;
+$Percentage = ($result/600)*100;
+$s = "INSERT INTO studentt(Reg_num,C_Lang,Linux,Aptitude,English,Storage,OpenSource,Percentage) VALUES ('$reg','$clan','$linux','$aptitude','$eng','$storage','$opensource','$Percentage')";
+
+$result = mysqli_query($con,$s);
+
+?>
+
+</body>
+</html>
